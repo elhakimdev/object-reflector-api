@@ -1,5 +1,7 @@
 <?php
+
 namespace Reflector\Contracts;
-interface ReflectorContract
+
+interface ClassReflectorContract
 {
 }

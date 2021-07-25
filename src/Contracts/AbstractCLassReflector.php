@@ -4,7 +4,7 @@ namespace Reflector\Contracts;
 use ReflectionClass;
 use Reflector\Contracts\ReflectorContract;
 
-abstract class AbstractReflector implements ReflectorContract
+abstract class AbstractClassReflector implements ClassReflectorContract
 {
        /**@var string|object $class */
        protected string|object $class;

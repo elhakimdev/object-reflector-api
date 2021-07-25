@@ -1,13 +1,14 @@
 <?php
+
 namespace Reflector;
 
 use ArrayAccess;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionExtension;
-use Reflector\Contracts\AbstractReflector;
+use Reflector\Contracts\AbstractClassReflector;
 
-class Reflector extends AbstractReflector implements ArrayAccess
+class ClassReflector extends AbstractClassReflector implements ArrayAccess
 {
        protected string|object $class;
        public array $attributes;
@@ -110,8 +111,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of attributes
         *
         * @return  self
-        */ 
-       public function setAttributes()
+        */
+       protected function setAttributes()
        {
               $this->attributes = $this->getReflector()->getAttributes();
 
@@ -122,8 +123,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of constants
         *
         * @return  self
-        */ 
-       public function setConstants()
+        */
+       protected function setConstants()
        {
               $this->constants = $this->getReflector()->getConstants();
 
@@ -134,8 +135,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of constructor
         *
         * @return  self
-        */ 
-       public function setConstructor()
+        */
+       protected function setConstructor()
        {
               $this->constructor = $this->getReflector()->getConstructor();
 
@@ -146,8 +147,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of defaultProperties
         *
         * @return  self
-        */ 
-       public function setDefaultProperties()
+        */
+       protected function setDefaultProperties()
        {
               $this->defaultProperties = $this->getReflector()->getDefaultProperties();
 
@@ -158,8 +159,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of docComment
         *
         * @return  self
-        */ 
-       public function setDocComment()
+        */
+       protected function setDocComment()
        {
               $this->docComment = $this->getReflector()->getDocComment();
 
@@ -170,8 +171,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of endLine
         *
         * @return  self
-        */ 
-       public function setEndLine()
+        */
+       protected function setEndLine()
        {
               $this->endLine = $this->getReflector()->getEndLine();
 
@@ -182,8 +183,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of extension
         *
         * @return  self
-        */ 
-       public function setExtension()
+        */
+       protected function setExtension()
        {
               $this->extension = $this->getReflector()->getExtension();
 
@@ -194,8 +195,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of extensionName
         *
         * @return  self
-        */ 
-       public function setExtensionName()
+        */
+       protected function setExtensionName()
        {
               $this->extensionName = $this->getReflector()->getExtensionName();
 
@@ -206,8 +207,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of fileName
         *
         * @return  self
-        */ 
-       public function setFileName()
+        */
+       protected function setFileName()
        {
               $this->fileName = $this->getReflector()->getFileName();
 
@@ -218,14 +219,14 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of interfaceNames
         *
         * @return  self
-        */ 
-       public function setInterfaceNames()
+        */
+       protected function setInterfaceNames()
        {
               $interfaceNames             = [];
               $list                       = $this->getReflector()->getInterfaceNames();
               $totalImplementedInterface  = count($this->getReflector()->getInterfaceNames());
 
-              for ($i=0; $i < $totalImplementedInterface ; $i++) { 
+              for ($i = 0; $i < $totalImplementedInterface; $i++) {
                      $interfaceNames[$list[$i]] = new ReflectionClass($list[$i]);
               }
 
@@ -238,8 +239,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of interfaces
         *
         * @return  self
-        */ 
-       public function setInterfaces()
+        */
+       protected function setInterfaces()
        {
               $this->interfaces = $this->getReflector()->getInterfaces();
 
@@ -250,13 +251,13 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of methods
         *
         * @return  self
-        */ 
-       public function setMethods()
+        */
+       protected function setMethods()
        {
               $data         = [];
               $methods      = $this->getReflector()->getMethods();
 
-              for ($i=0; $i < count($methods); $i++) { 
+              for ($i = 0; $i < count($methods); $i++) {
                      $data[$methods[$i]->name] = $methods[$i];
               }
 
@@ -269,8 +270,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of modifiers
         *
         * @return  self
-        */ 
-       public function setModifiers()
+        */
+       protected function setModifiers()
        {
               $this->modifiers = $this->getReflector()->getModifiers();
 
@@ -281,8 +282,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of name
         *
         * @return  self
-        */ 
-       public function setName()
+        */
+       protected function setName()
        {
               $this->name = $this->getReflector()->getName();
 
@@ -293,8 +294,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of namespaceName
         *
         * @return  self
-        */ 
-       public function setNamespaceName()
+        */
+       protected function setNamespaceName()
        {
               $this->namespaceName = $this->getReflector()->getNamespaceName();
 
@@ -305,8 +306,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of parentClass
         *
         * @return  self
-        */ 
-       public function setParentClass()
+        */
+       protected function setParentClass()
        {
               $this->parentClass = $this->getReflector()->getParentClass();
 
@@ -317,13 +318,13 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of properties
         *
         * @return  self
-        */ 
-       public function setProperties()
+        */
+       protected function setProperties()
        {
               $data                = [];
               $properties          = $this->getReflector()->getProperties();
-              
-              for ($i=0; $i < count($properties); $i++) { 
+
+              for ($i = 0; $i < count($properties); $i++) {
                      $data[$properties[$i]->name] = $properties[$i];
               }
 
@@ -336,13 +337,13 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of reflectionConstants
         *
         * @return  self
-        */ 
-       public function setReflectionConstants()
+        */
+       protected function setReflectionConstants()
        {
-              $data = []; 
+              $data = [];
               $reflectionConstants = $this->getReflector()->getReflectionConstants();
 
-              for ($i=0; $i < count($reflectionConstants) ; $i++) { 
+              for ($i = 0; $i < count($reflectionConstants); $i++) {
                      $data[$reflectionConstants[$i]->name] = $reflectionConstants[$i];
               }
 
@@ -355,8 +356,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of shortName
         *
         * @return  self
-        */ 
-       public function setShortName()
+        */
+       protected function setShortName()
        {
               $this->shortName = $this->getReflector()->getShortName();
 
@@ -367,8 +368,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of startLine
         *
         * @return  self
-        */ 
-       public function setStartLine()
+        */
+       protected function setStartLine()
        {
               $this->startLine = $this->getReflector()->getStartLine();
 
@@ -379,8 +380,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of staticProperties
         *
         * @return  self
-        */ 
-       public function setStaticProperties()
+        */
+       protected function setStaticProperties()
        {
               $this->staticProperties = $this->getReflector()->getStaticProperties();
 
@@ -391,8 +392,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of traitAliases
         *
         * @return  self
-        */ 
-       public function setTraitAliases()
+        */
+       protected function setTraitAliases()
        {
               $this->traitAliases = $this->getReflector()->getTraitAliases();
 
@@ -403,8 +404,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of inNamespace
         *
         * @return  self
-        */ 
-       public function setInNamespace()
+        */
+       protected function setInNamespace()
        {
               $this->inNamespace = $this->getReflector()->inNamespace();
 
@@ -415,8 +416,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isAbstract
         *
         * @return  self
-        */ 
-       public function setIsAbstract()
+        */
+       protected function setIsAbstract()
        {
               $this->isAbstract = $this->getReflector()->isAbstract();
 
@@ -427,8 +428,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isAnonymous
         *
         * @return  self
-        */ 
-       public function setIsAnonymous()
+        */
+       protected function setIsAnonymous()
        {
               $this->isAnonymous = $this->getReflector()->isAnonymous();
 
@@ -439,8 +440,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isClonable
         *
         * @return  self
-        */ 
-       public function setIsClonable()
+        */
+       protected function setIsClonable()
        {
               $this->isClonable = $this->getReflector()->isCloneable();
 
@@ -451,8 +452,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isFinal
         *
         * @return  self
-        */ 
-       public function setIsFinal()
+        */
+       protected function setIsFinal()
        {
               $this->isFinal = $this->getReflector()->isFinal();
 
@@ -463,8 +464,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isInstantiable
         *
         * @return  self
-        */ 
-       public function setIsInstantiable()
+        */
+       protected function setIsInstantiable()
        {
               $this->isInstantiable = $this->getReflector()->isInstantiable();
 
@@ -475,8 +476,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isInterface
         *
         * @return  self
-        */ 
-       public function setIsInterface()
+        */
+       protected function setIsInterface()
        {
               $this->isInterface = $this->getReflector()->isInterface();
 
@@ -487,8 +488,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isInternal
         *
         * @return  self
-        */ 
-       public function setIsInternal()
+        */
+       protected function setIsInternal()
        {
               $this->isInternal = $this->getReflector()->isInternal();
 
@@ -499,8 +500,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isIterable
         *
         * @return  self
-        */ 
-       public function setIsIterable()
+        */
+       protected function setIsIterable()
        {
               $this->isIterable = $this->getReflector()->isIterable();
 
@@ -511,8 +512,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isIterateable
         *
         * @return  self
-        */ 
-       public function setIsIterateable()
+        */
+       protected function setIsIterateable()
        {
               $this->isIterateable = $this->getReflector()->isIterateable();
 
@@ -523,8 +524,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isTrait
         *
         * @return  self
-        */ 
-       public function setIsTrait()
+        */
+       protected function setIsTrait()
        {
               $this->isTrait = $this->getReflector()->isTrait();
 
@@ -535,8 +536,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of isUserDefined
         *
         * @return  self
-        */ 
-       public function setIsUserDefined()
+        */
+       protected function setIsUserDefined()
        {
               $this->isUserDefined = $this->getReflector()->isUserDefined();
 
@@ -547,8 +548,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of traits
         *
         * @return  self
-        */ 
-       public function setTraits()
+        */
+       protected function setTraits()
        {
               $this->traits = $this->getReflector()->getTraits();
 
@@ -559,8 +560,8 @@ class Reflector extends AbstractReflector implements ArrayAccess
         * Set the value of traitNames
         *
         * @return  self
-        */ 
-       public function setTraitNames()
+        */
+       protected function setTraitNames()
        {
               $this->traitNames = $this->getReflector()->getTraitNames();
 
@@ -568,18 +569,286 @@ class Reflector extends AbstractReflector implements ArrayAccess
        }
        public function offsetExists($offset)
        {
-              
        }
        public function offsetGet($offset)
        {
-              
        }
        public function offsetSet($offset, $value)
        {
-              
        }
        public function offsetUnset($offset)
        {
-              
+       }
+
+       /**
+        * Get the value of constants
+        */
+       public function getConstants()
+       {
+              return $this->constants;
+       }
+
+       /**
+        * Get the value of attributes
+        */
+       public function getAttributes()
+       {
+              return $this->attributes;
+       }
+
+       /**
+        * Get the value of constructor
+        */
+       public function getConstructor()
+       {
+              return $this->constructor;
+       }
+
+       /**
+        * Get the value of defaultProperties
+        */
+       public function getDefaultProperties()
+       {
+              return $this->defaultProperties;
+       }
+
+       /**
+        * Get the value of docComment
+        */
+       public function getDocComment()
+       {
+              return $this->docComment;
+       }
+
+       /**
+        * Get the value of endLine
+        */
+       public function getEndLine()
+       {
+              return $this->endLine;
+       }
+
+       /**
+        * Get the value of extension
+        */
+       public function getExtension()
+       {
+              return $this->extension;
+       }
+
+       /**
+        * Get the value of fileName
+        */
+       public function getFileName()
+       {
+              return $this->fileName;
+       }
+
+       /**
+        * Get the value of interfaces
+        */
+       public function getInterfaces()
+       {
+              return $this->interfaces;
+       }
+
+       /**
+        * Get the value of interfaceNames
+        */
+       public function getInterfaceNames()
+       {
+              return $this->interfaceNames;
+       }
+
+       /**
+        * Get the value of extensionName
+        */
+       public function getExtensionName()
+       {
+              return $this->extensionName;
+       }
+
+       /**
+        * Get the value of properties
+        */
+       public function getProperties()
+       {
+              return $this->properties;
+       }
+
+       /**
+        * Get the value of parentClass
+        */
+       public function getParentClass()
+       {
+              return $this->parentClass;
+       }
+
+       /**
+        * Get the value of namespaceName
+        */
+       public function getNamespaceName()
+       {
+              return $this->namespaceName;
+       }
+
+       /**
+        * Get the value of name
+        */
+       public function getName()
+       {
+              return $this->name;
+       }
+
+       /**
+        * Get the value of reflectionConstants
+        */
+       public function getReflectionConstants()
+       {
+              return $this->reflectionConstants;
+       }
+
+       /**
+        * Get the value of shortName
+        */
+       public function getShortName()
+       {
+              return $this->shortName;
+       }
+
+       /**
+        * Get the value of startLine
+        */
+       public function getStartLine()
+       {
+              return $this->startLine;
+       }
+
+       /**
+        * Get the value of staticProperties
+        */
+       public function getStaticProperties()
+       {
+              return $this->staticProperties;
+       }
+
+       /**
+        * Get the value of isClonable
+        */
+       public function IsClonable()
+       {
+              return $this->isClonable;
+       }
+
+       /**
+        * Get the value of isFinal
+        */
+       public function IsFinal()
+       {
+              return $this->isFinal;
+       }
+
+       /**
+        * Get the value of isAnonymous
+        */
+       public function IsAnonymous()
+       {
+              return $this->isAnonymous;
+       }
+
+       /**
+        * Get the value of isAbstract
+        */
+       public function IsAbstract()
+       {
+              return $this->isAbstract;
+       }
+
+       /**
+        * Get the value of inNamespace
+        */
+       public function InNamespace()
+       {
+              return $this->inNamespace;
+       }
+
+       /**
+        * Get the value of traits
+        */
+       public function getTraits()
+       {
+              return $this->traits;
+       }
+
+       /**
+        * Get the value of traitNames
+        */
+       public function getTraitNames()
+       {
+              return $this->traitNames;
+       }
+
+       /**
+        * Get the value of traitAliases
+        */
+       public function getTraitAliases()
+       {
+              return $this->traitAliases;
+       }
+
+       /**
+        * Get the value of isIterateable
+        */
+       public function IsIterateable()
+       {
+              return $this->isIterateable;
+       }
+
+       /**
+        * Get the value of isIterable
+        */
+       public function IsIterable()
+       {
+              return $this->isIterable;
+       }
+
+       /**
+        * Get the value of isInternal
+        */
+       public function IsInternal()
+       {
+              return $this->isInternal;
+       }
+
+       /**
+        * Get the value of isInterface
+        */
+       public function IsInterface()
+       {
+              return $this->isInterface;
+       }
+
+       /**
+        * Get the value of isInstantiable
+        */
+       public function IsInstantiable()
+       {
+              return $this->isInstantiable;
+       }
+
+       /**
+        * Get the value of isUserDefined
+        */
+       public function IsUserDefined()
+       {
+              return $this->isUserDefined;
+       }
+
+       /**
+        * Get the value of isTrait
+        */
+       public function IsTrait()
+       {
+              return $this->isTrait;
        }
 }
