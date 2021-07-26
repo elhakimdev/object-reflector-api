@@ -17,5 +17,8 @@
         "psr-4": {
             "Reflector\\":"src"
         }
+    },
+    "require": {
+        "laravel/framework": "^8.51"
     }
 }

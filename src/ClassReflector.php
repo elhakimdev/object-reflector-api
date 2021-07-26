@@ -16,7 +16,7 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
         */
        public array $attributes;
 
-       // public $constant;
+       // public mixed $constant;
 
        /**
         * The class constants.
@@ -26,7 +26,7 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /** 
         * The class contrustor. 
         */
-       public ReflectionMethod|null $constructor;
+       public ?ReflectionMethod $constructor;
 
        /**
         * The class edfault properties.
@@ -36,7 +36,7 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /**
         * The class doc comment.
         */
-       public string|bool $docComment;
+       public string|false $docComment;
 
        /** 
         * The class end of line
@@ -46,34 +46,34 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /**
         * The class extension.
         */
-       public ReflectionExtension|null $extension;
+       public ?ReflectionExtension $extension;
 
        /**
         * The class extension name.
         */
-       public string|bool $extensionName;
+       public string|false $extensionName;
 
        /**
         * The class file name.
         */
-       public string|bool $fileName;
+       public string|false $fileName;
 
        /**
         * The class interfaces name.
         */
-       public mixed $interfaceNames;
+       public array $interfaceNames;
 
        /**
         * The class interfaces.
         */
-       public mixed $interfaces;
+       public array $interfaces;
 
        // public $method;
 
        /**
         * The class methods.
         */
-       public mixed $methods;
+       public array $methods;
 
        /**
         * The class modifiers.
@@ -93,7 +93,7 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /**
         * The parent class of this class.
         */
-       public mixed $parentClass;
+       public ReflectionClass|false $parentClass;
 
        /**
         * The class properties.
@@ -116,12 +116,12 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /**
         * The class start line.
         */
-       public int $startLine;
+       public int|false $startLine;
 
        /**
         * The class static properties.
         */
-       public array $staticProperties;
+       public ?array $staticProperties;
 
        // public $staticPropertyValue;
 
@@ -133,12 +133,12 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        /** 
         * The class trait names.
         */
-       public array $traitNames;
+       public mixed $traitNames;
 
        /** 
         * The class traits.
         */
-       public array $traits;
+       public mixed $traits;
 
        // public bool $hasContant;
        // public bool $hasProperty;
