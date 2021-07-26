@@ -2,7 +2,7 @@
 namespace Reflector\Contracts;
 
 use ReflectionClass;
-use Reflector\Contracts\ReflectorContract;
+use Reflector\Contracts\ClassReflectorContract;
 
 abstract class AbstractClassReflector implements ClassReflectorContract
 {

@@ -11,52 +11,200 @@ use Reflector\Contracts\AbstractClassReflector;
 class ClassReflector extends AbstractClassReflector implements ArrayAccess
 {
        protected string|object $class;
+       /**
+        * The class attributes.
+        */
        public array $attributes;
+
        // public $constant;
+
+       /**
+        * The class constants.
+        */
        public array $constants;
+
+       /** 
+        * The class contrustor. 
+        */
        public ReflectionMethod|null $constructor;
+
+       /**
+        * The class edfault properties.
+        */
        public array $defaultProperties;
+
+       /**
+        * The class doc comment.
+        */
        public string|bool $docComment;
+
+       /** 
+        * The class end of line
+        */
        public string $endLine;
+
+       /**
+        * The class extension.
+        */
        public ReflectionExtension|null $extension;
+
+       /**
+        * The class extension name.
+        */
        public string|bool $extensionName;
+
+       /**
+        * The class file name.
+        */
        public string|bool $fileName;
+
+       /**
+        * The class interfaces name.
+        */
        public mixed $interfaceNames;
+
+       /**
+        * The class interfaces.
+        */
        public mixed $interfaces;
+
        // public $method;
+
+       /**
+        * The class methods.
+        */
        public mixed $methods;
+
+       /**
+        * The class modifiers.
+        */
        public int $modifiers;
+
+       /**
+        * The class name.
+        */
        public string $name;
+
+       /**
+        * The class namespace name.
+        */
        public string $namespaceName;
+
+       /**
+        * The parent class of this class.
+        */
        public mixed $parentClass;
+
+       /**
+        * The class properties.
+        */
        public array $properties;
+
        // public $property;
        // public $reflectionConstant;
+
+       /**
+        * The class reflection constants.
+        */
        public array $reflectionConstants;
+
+       /**
+        * The class short name
+        */
        public string $shortName;
+
+       /**
+        * The class start line.
+        */
        public int $startLine;
+
+       /**
+        * The class static properties.
+        */
        public array $staticProperties;
+
        // public $staticPropertyValue;
+
+       /**
+        * The class trait aliases.
+        */
        public mixed $traitAliases;
+
+       /** 
+        * The class trait names.
+        */
        public array $traitNames;
+
+       /** 
+        * The class traits.
+        */
        public array $traits;
+
        // public bool $hasContant;
        // public bool $hasProperty;
        // public bool $hasMethod;
        // public bool $implementsInterface;
+       /**
+        * Check is the class is in namespace.
+        */
        public bool $inNamespace;
+
+       /**
+        * Check is the class is abstracts class.
+        */
        public bool $isAbstract;
+
+       /**
+        * Check is the class is anonymous class.
+        */
        public bool $isAnonymous;
+
+       /**
+        * Check is the class is clonable class.
+        */
        public bool $isClonable;
+
+       /**
+        * Check is the class is final class.
+        */
        public bool $isFinal;
+
        // public bool $isInstance;
+
+       /**
+        * Check is the class is instantable.
+        */
        public bool $isInstantiable;
+
+       /**
+        * Check is the class is interface.
+        */
        public bool $isInterface;
+
+       /**
+        * Check is the class is internal class.
+        */
        public bool $isInternal;
+
+       /**
+        * Check is the class is iterable class.
+        */
        public bool $isIterable;
+
+       /**
+        * Check is the class is iteratable class.
+        */
        public bool $isIterateable;
+
        // public bool $isSubclassof;
+
+       /**
+        * Check is the class is trait.
+        */
        public bool $isTrait;
+       /**
+        * Check is the class is user defined class.
+        */
        public bool $isUserDefined;
        // public $newInstance;
        // public $newInstanceArgs;
@@ -569,15 +717,19 @@ class ClassReflector extends AbstractClassReflector implements ArrayAccess
        }
        public function offsetExists($offset)
        {
+              //
        }
        public function offsetGet($offset)
        {
+              return $this->$offset;
        }
        public function offsetSet($offset, $value)
        {
+              //
        }
        public function offsetUnset($offset)
        {
+              //
        }
 
        /**
